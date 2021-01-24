@@ -32,7 +32,7 @@ jobs:
         context: ./.
         file: ./src/${{ matrix.apps }}/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest, ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:${{ event.run_id }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest, ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:$GITHUB_RUN_ID
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
 

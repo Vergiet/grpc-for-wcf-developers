@@ -19,7 +19,7 @@ jobs:
       with:
         method: service-account
         k8s-url: https://aks-temp-dns-4e3bd399.hcp.westeurope.azmk8s.io:443
-        k8s-secret: KUBE_SECRET
+        k8s-secret: ${{ secrets.KUBE_SECRET }}
       id: setcontext
     - name: deploy to aks
       uses: Azure/k8s-deploy@v1.3

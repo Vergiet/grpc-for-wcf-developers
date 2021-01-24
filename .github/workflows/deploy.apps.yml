@@ -1,5 +1,7 @@
 name: grpc on k8s example - deploy
 
+on: workflow_dispatch
+
 jobs:  
   Deploy:
     needs: [build]

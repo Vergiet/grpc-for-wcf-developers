@@ -15,6 +15,7 @@ jobs:
         apps: ['stockdata', 'stockweb']
 
     steps:
+    - uses: actions/checkout@v2
     - name: Run a one-line script
       run: ls -la ./
     - name: Set up QEMU

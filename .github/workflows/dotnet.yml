@@ -31,9 +31,7 @@ jobs:
         context: ./KubernetesSample/src/StockData
         file: ./KubernetesSample/src/StockData/Dockerfile
         push: true
-        tags: 
-        ${{ secrets.DOCKERHUB_USERNAME }}/StockData:latest
-        ${{ secrets.DOCKERHUB_USERNAME }}/StockData:1.0.0        
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/StockData:latest, ${{ secrets.DOCKERHUB_USERNAME }}/StockData:1.0.0
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
     - name: Build and push StockWeb
@@ -43,9 +41,7 @@ jobs:
         context: ./KubernetesSample/src/StockWeb
         file: ./KubernetesSample/src/StockWeb/Dockerfile
         push: true
-        tags: 
-        ${{ secrets.DOCKERHUB_USERNAME }}/StockWeb:latest
-        ${{ secrets.DOCKERHUB_USERNAME }}/StockWeb:1.0.0        
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/StockWeb:latest, ${{ secrets.DOCKERHUB_USERNAME }}/StockWeb:1.0.0
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
 

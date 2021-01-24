@@ -13,6 +13,7 @@ jobs:
     strategy:
       matrix:
         dotnet-version: [ '5.0.x' ]
+        apps: ['StockData', 'StockWeb']
 
     steps:
     - name: Set up QEMU
@@ -24,24 +25,14 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Build and push StockData
-      id: docker_build_StockData
+    - name: Build and push ${{ matrix.apps }}
+      id: docker_build_${{ matrix.apps }}
       uses: docker/build-push-action@v2
       with:
-        context: ./KubernetesSample/src/StockData
-        file: ./KubernetesSample/src/StockData/Dockerfile
+        context: ./KubernetesSample/src/${{ matrix.apps }}
+        file: ./KubernetesSample/src/${{ matrix.apps }}/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/StockData:latest, ${{ secrets.DOCKERHUB_USERNAME }}/StockData:1.0.0
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest, ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:1.0.0
     - name: Image digest
-      run: echo ${{ steps.docker_build.outputs.digest }}
-    - name: Build and push StockWeb
-      id: docker_build_StockWeb
-      uses: docker/build-push-action@v2
-      with:
-        context: ./KubernetesSample/src/StockWeb
-        file: ./KubernetesSample/src/StockWeb/Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/StockWeb:latest, ${{ secrets.DOCKERHUB_USERNAME }}/StockWeb:1.0.0
-    - name: Image digest
-      run: echo ${{ steps.docker_build.outputs.digest }}
+
 

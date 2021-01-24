@@ -24,14 +24,14 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Build and push stockdata
+    - name: Build and push ${{ matrix.apps }}
       id: docker_build
       uses: docker/build-push-action@v2
       with:
-        context: ./KubernetesSample/src/stockdata
-        file: ./KubernetesSample/src/stockdata/Dockerfile
+        context: .\KubernetesSample\src\${{ matrix.apps }}
+        file: .\KubernetesSample\src\${{ matrix.apps }}\Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/stockdata:latest, ${{ secrets.DOCKERHUB_USERNAME }}/stockdata:1.0.0
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest, ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:1.0.0
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
 

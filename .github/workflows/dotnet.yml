@@ -34,5 +34,6 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest, ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:1.0.0
     - name: Image digest
+      run: echo ${{ steps.docker_build.outputs.digest }}
 
 

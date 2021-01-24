@@ -32,8 +32,29 @@ jobs:
         context: ./.
         file: ./src/${{ matrix.apps }}/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest, ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:1.0.0
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest, ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:${{ event.run_id }}
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
+
+jobs:
+  Deploy:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        apps: ['stockdata', 'stockweb']
+  
+    # Set the target AKS cluster.
+    - uses: Azure/k8s-set-context@v1
+      with:
+        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+    - name: deploy to aks
+      uses: Azure/k8s-deploy@v1.3
+      with:
+        manifests: |
+            kubernetes\namespace.yml
+            kubernetes\${{ matrix.apps }}.yml
+        images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest
+        kubectl-version: 'latest'
 
 

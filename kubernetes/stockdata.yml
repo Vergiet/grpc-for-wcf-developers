@@ -16,7 +16,6 @@ spec:
       containers:
       - name: stockdata
         image: stockdata:1.0.0
-        imagePullPolicy: Never
         resources:
           limits:
             cpu: 100m

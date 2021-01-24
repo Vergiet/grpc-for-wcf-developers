@@ -37,7 +37,8 @@ jobs:
       run: echo ${{ steps.docker_build.outputs.digest }}
 
   Deploy:
-
+    needs: [build]
+    
     runs-on: ubuntu-latest
     strategy:
       matrix:

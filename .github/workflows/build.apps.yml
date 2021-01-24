@@ -2,7 +2,7 @@ name: grpc on k8s example - build
 
 on:
   push:
-    branches: [ '*' ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 

@@ -1,2 +1,2 @@
-docker build -t stockdata:1.0.0 -f .\src\stockdata\Dockerfile ./src/stockdata
-docker build -t stockweb:1.0.0 -f .\src\stockweb\Dockerfile ./src/stockweb
+docker build -t stockdata:1.0.0 -f .\src\stockdata\Dockerfile .
+docker build -t stockweb:1.0.0 -f .\src\stockweb\Dockerfile .

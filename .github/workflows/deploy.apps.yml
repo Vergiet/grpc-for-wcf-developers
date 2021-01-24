@@ -30,3 +30,4 @@ jobs:
         images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest
         kubectl-version: 'latest'
 
+

@@ -2,6 +2,8 @@ name: grpc on k8s example - deploy
 
 
 on: 
+  push:
+    branches: [ '*' ]
   workflow_dispatch:
     inputs:
       logLevel:

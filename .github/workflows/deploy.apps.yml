@@ -1,0 +1,24 @@
+name: grpc on k8s example - deploy
+
+jobs:  
+  Deploy:
+    needs: [build]
+    
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        apps: ['stockdata', 'stockweb']
+
+    steps:
+    - uses: Azure/k8s-set-context@v1
+      with:
+        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+    - name: deploy to aks
+      uses: Azure/k8s-deploy@v1.3
+      with:
+        manifests: |
+            .\kubernetes\namespace.yml
+            .\kubernetes\${{ matrix.apps }}.yml
+        images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest
+        kubectl-version: 'latest'
+

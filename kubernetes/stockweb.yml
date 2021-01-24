@@ -15,8 +15,7 @@ spec:
     spec:
       containers:
       - name: stockweb
-        image: stockweb:1.0.0
-        imagePullPolicy: Never
+        image: gortemetiel/stockweb:latest
         resources:
           limits:
             cpu: 100m

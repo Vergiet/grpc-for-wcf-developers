@@ -15,9 +15,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: Azure/k8s-set-context@v1
+    - uses: azure/k8s-set-context@v1
       with:
-        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+        method: service-account
+        k8s-url: https://aks-temp-dns-4e3bd399.hcp.westeurope.azmk8s.io:443
+        k8s-secret: KUBE_SECRET
+      id: setcontext
     - name: deploy to aks
       uses: Azure/k8s-deploy@v1.3
       with:

@@ -24,6 +24,7 @@ jobs:
     - name: deploy to aks
       uses: Azure/k8s-deploy@v1.3
       with:
+        namespace: 'stocks'
         manifests: |
             ./kubernetes/namespace.yml
             ./kubernetes/${{ matrix.apps }}.yml

@@ -10,7 +10,7 @@ RUN dotnet restore
 
 COPY . .
 
-RUN dotnet publish --no-restore -c Release -o /published src/StockWeb/StockWeb.csproj
+RUN dotnet publish --no-restore -c Release -o /published src/stockweb/StockWeb.csproj
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
 

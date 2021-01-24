@@ -3,8 +3,8 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.0 as build
 WORKDIR /src
 
 COPY ./StockKube.sln .
-COPY ./src/StockData/StockData.csproj ./src/StockData/
-COPY ./src/StockWeb/StockWeb.csproj ./src/StockWeb/
+COPY ./src/stockdata/StockData.csproj ./src/StockData/
+COPY ./src/stockweb/StockWeb.csproj ./src/StockWeb/
 
 RUN dotnet restore
 

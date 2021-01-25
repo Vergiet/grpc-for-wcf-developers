@@ -27,13 +27,16 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build and push ${{ matrix.apps }}
       id: docker_build
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v1
       with:
         context: ./.
         file: ./src/${{ matrix.apps }}/Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest, ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:1.0.2
-    - name: Image digest
-      run: echo ${{ steps.docker_build.outputs.digest }}
-
+        username: ${{ github.actor }}
+        password: ${{ secrets.GHCR_WRITETOKEN }}
+        registry: docker.pkg.github.com
+        repository: ${{ github.repository }}/grpc-for-wcf-developers
+        tag_with_sha: true
+        tag_with_ref: true
 

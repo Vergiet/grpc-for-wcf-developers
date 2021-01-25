@@ -1,4 +1,4 @@
-name: grpc on k8s example - deploy
+name: grpc_on_k8s_example_-_deploy
 
 
 on: 

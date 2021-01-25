@@ -26,5 +26,5 @@ jobs:
         namespace: 'stocks'
         manifests: |
             ./kubernetes/${{ matrix.apps }}.yml
-        images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest
+        images: ghcr.io/vergiet/${{ matrix.apps }}:latest
         kubectl-version: 'latest'

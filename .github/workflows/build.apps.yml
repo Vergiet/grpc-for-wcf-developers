@@ -36,4 +36,3 @@ jobs:
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:latest, ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.apps }}:1.0.2
         tag_with_sha: true
         tag_with_ref: true
-

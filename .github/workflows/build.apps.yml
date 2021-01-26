@@ -9,7 +9,8 @@ on:
 jobs:
   build:
 
-    runs-on: [ubuntu-latest, Ubuntu-20.04]
+    #runs-on: ubuntu-latest
+    runs-on: Ubuntu-20.04
     strategy:
       matrix:
         apps: ['stockdata', 'stockweb']

@@ -33,5 +33,5 @@ jobs:
         context: ./.
         file: ./src/${{ matrix.apps }}/Dockerfile
         push: true
-        tags: ghcr.io/vergiet/${{ matrix.apps }}:latest, ghcr.io/vergiet/${{ matrix.apps }}:1.0.6
+        tags: ghcr.io/vergiet/${{ matrix.apps }}:latest, ghcr.io/vergiet/${{ matrix.apps }}:1.0.7
 

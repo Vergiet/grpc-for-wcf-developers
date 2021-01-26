@@ -15,6 +15,7 @@ spec:
     spec:
       containers:
       - name: stockdata
+        image: ghcr.io/vergiet/stockdata:latest
         resources:
           limits:
             cpu: 100m

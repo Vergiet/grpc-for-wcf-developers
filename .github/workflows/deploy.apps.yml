@@ -3,8 +3,7 @@ name: grpc_on_k8s_example_-_deploy
 
 on:
   registry_package:
-    types: 
-      - published
+    types: [published, updated]
 
 jobs:  
   Deploy:

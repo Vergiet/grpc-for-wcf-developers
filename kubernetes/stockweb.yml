@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: stockweb
-        image: gortemetiel/stockweb:latest
+        image: ghcr.io/vergiet/stockweb:latest
         resources:
           limits:
             cpu: 100m

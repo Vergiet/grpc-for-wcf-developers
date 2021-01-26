@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: stockdata
-        image: gortemetiel/stockdata:latest
+        image: ghcr.io/vergiet/stockdata:latest
         resources:
           limits:
             cpu: 100m

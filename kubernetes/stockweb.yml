@@ -6,12 +6,17 @@ metadata:
 spec:
   selector:
     matchLabels:
-      run: stockweb
+      app: stockweb
   replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
   template:
     metadata:
       labels:
-        run: stockweb
+        app: stockweb
     spec:
       containers:
       - name: stockweb
@@ -36,7 +41,7 @@ metadata:
   name: stockweb
   namespace: stocks
 spec:
-  type: NodePort 
+  type: LoadBalancer 
   ports:
   - port: 80
   selector:
